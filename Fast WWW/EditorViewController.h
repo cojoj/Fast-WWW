@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  EditorViewController.h
 //  Fast WWW
 //
 //  Created by Mateusz Zając on 13.11.2013.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface EditorViewController : UIViewController
 
 @end
