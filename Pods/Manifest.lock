@@ -1,0 +1,21 @@
+PODS:
+  - CocoaAsyncSocket (7.3.2)
+  - CocoaHTTPServer (2.3):
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+  - CocoaLumberjack (1.6.3):
+    - CocoaLumberjack/Core
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.6.3)
+  - CocoaLumberjack/Extensions (1.6.3):
+    - CocoaLumberjack/Core
+
+DEPENDENCIES:
+  - CocoaHTTPServer (~> 2.3)
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: 977404129ec8505fee1c3701956b769e3bb10ea7
+  CocoaHTTPServer: 7c2fce6617f7fda0e3f4fc34f96e562caa7c7bd8
+  CocoaLumberjack: 0af89e0de15835a499fcc6ee5e0b6d396bc95976
+
+COCOAPODS: 0.26.1
