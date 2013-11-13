@@ -9,9 +9,13 @@
 #import "SettingsViewController.h"
 #import <ifaddrs.h>
 #import <arpa/inet.h>
+#import <HTTPServer.h>
 
 @interface SettingsViewController ()
-
+{
+    HTTPServer *server;
+    UInt16 port;
+}
 @end
 
 @implementation SettingsViewController
@@ -20,19 +24,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    server = [[HTTPServer alloc] init];
     [self.IPAddressLabel setText:[self getIPAddress]];
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)setServerMode:(UISwitch *)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (![sender isOn]) {
+        if ([server isRunning]) {
+            [server stop];
+            NSLog(@"Server was turned off!");
+        }
+    } else {
+        [self fireUpServer];
+    }
 }
 
 #pragma mark - Obtaining IP adress
 
-- (NSString *)getIPAddress {
+- (NSString *)getIPAddress
+{
     NSString *address = @"error";
     struct ifaddrs *interfaces = NULL;
     struct ifaddrs *temp_addr = NULL;
@@ -57,6 +68,19 @@
     freeifaddrs(interfaces);
     return address;
     
+}
+
+#pragma mark - Server setting
+
+- (void)fireUpServer
+{
+    NSError *error;
+	if([server start:&error]) {
+		NSLog(@"Started HTTP Server on port %hu", [server listeningPort]);
+	}
+	else {
+		NSLog(@"Error starting HTTP Server: %@", error);
+	}
 }
 
 @end

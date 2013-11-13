@@ -16,14 +16,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="000-000-000-000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wox-Dw-egu">
-                                <rect key="frame" x="93" y="20" width="135" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="000-000-000-000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wox-Dw-egu">
+                                <rect key="frame" x="93" y="229" width="135" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="skC-XH-t85">
+                                <rect key="frame" x="251" y="74" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="setServerMode:" destination="FN9-wU-7Ft" eventType="valueChanged" id="0b8-BX-QEg"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Server mode:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbW-qq-scp">
+                                <rect key="frame" x="20" y="79" width="103" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8080" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VqX-NZ-ZSM">
+                                <rect key="frame" x="179" y="36" width="121" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set port:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krh-zv-5Mb">
+                                <rect key="frame" x="20" y="36" width="67" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Krh-zv-5Mb" firstAttribute="leading" secondItem="XbW-qq-scp" secondAttribute="leading" id="2hr-A2-XjI"/>
+                            <constraint firstItem="wox-Dw-egu" firstAttribute="leading" secondItem="XbW-qq-scp" secondAttribute="leading" id="47O-Tt-0qD"/>
+                            <constraint firstItem="wox-Dw-egu" firstAttribute="top" secondItem="XbW-qq-scp" secondAttribute="bottom" constant="69" id="7WD-gI-ROr"/>
+                            <constraint firstItem="Krh-zv-5Mb" firstAttribute="top" secondItem="VqX-NZ-ZSM" secondAttribute="top" id="PAl-aM-JzU"/>
+                            <constraint firstItem="Krh-zv-5Mb" firstAttribute="leading" secondItem="PNZ-fh-U70" secondAttribute="leading" constant="20" symbolic="YES" id="RTd-jZ-bGS"/>
+                            <constraint firstItem="XbW-qq-scp" firstAttribute="top" secondItem="Krh-zv-5Mb" secondAttribute="bottom" constant="22" id="VaL-u5-N7P"/>
+                            <constraint firstItem="skC-XH-t85" firstAttribute="trailing" secondItem="VqX-NZ-ZSM" secondAttribute="trailing" id="aFg-d0-mrY"/>
+                            <constraint firstItem="VqX-NZ-ZSM" firstAttribute="leading" secondItem="Krh-zv-5Mb" secondAttribute="trailing" constant="92" id="bNL-HY-E7M"/>
+                            <constraint firstItem="Krh-zv-5Mb" firstAttribute="top" secondItem="PNZ-fh-U70" secondAttribute="top" constant="20" symbolic="YES" id="h6y-W2-GXk"/>
+                            <constraint firstItem="XbW-qq-scp" firstAttribute="centerY" secondItem="skC-XH-t85" secondAttribute="centerY" id="qH5-Lx-Fi5"/>
+                            <constraint firstAttribute="trailing" secondItem="VqX-NZ-ZSM" secondAttribute="trailing" constant="20" symbolic="YES" id="xVC-as-7VF"/>
+                            <constraint firstItem="skC-XH-t85" firstAttribute="top" secondItem="VqX-NZ-ZSM" secondAttribute="bottom" constant="8" symbolic="YES" id="xts-Qk-hoY"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Server Options" image="server" id="noK-yw-hag"/>
                     <connections>

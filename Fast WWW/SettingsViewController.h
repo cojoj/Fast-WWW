@@ -11,5 +11,7 @@
 @interface SettingsViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *IPAddressLabel;
+- (IBAction)setServerMode:(UISwitch *)sender;
+
 
 @end
