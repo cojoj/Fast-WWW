@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *portTextField;
 @property (strong, nonatomic) IBOutlet UILabel *IPAddressLabel;
+@property (strong, nonatomic) IBOutlet UILabel *infoLabel;
 - (IBAction)setServerMode:(UISwitch *)sender;
 
 

@@ -25,7 +25,14 @@
 {
     [super viewDidLoad];
     server = [[HTTPServer alloc] init];
-    [self.IPAddressLabel setText:[self getIPAddress]];
+    
+    if ([[self getIPAddress] isEqualToString:@"error"]) {
+        [self.infoLabel setText:@"You can't broadcast through GSM"];
+        [self.IPAddressLabel setText:@"Turn on WiFi!"];
+    } else {
+        [self.infoLabel setText:@"You are broadcating on:"];
+        [self.IPAddressLabel setText:[NSString stringWithFormat:@"%@:%@", [self getIPAddress], self.portTextField.text ? self.portTextField.text : @"8080"]];
+    }
 }
 
 - (IBAction)setServerMode:(UISwitch *)sender

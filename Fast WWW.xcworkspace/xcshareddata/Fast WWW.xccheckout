@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9BABB2FA-5EC1-40F5-87A8-0C8DAC3C665F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Fast WWW</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7FB28316-0249-4CF3-ADB0-AC685907FCC4</key>
+		<string>https://github.com/cojoj/Fast-WWW.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Fast WWW.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7FB28316-0249-4CF3-ADB0-AC685907FCC4</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cojoj/Fast-WWW.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7FB28316-0249-4CF3-ADB0-AC685907FCC4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7FB28316-0249-4CF3-ADB0-AC685907FCC4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Fast WWW</string>
+		</dict>
+	</array>
+</dict>
+</plist>
