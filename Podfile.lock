@@ -18,4 +18,4 @@ SPEC CHECKSUMS:
   CocoaHTTPServer: 7c2fce6617f7fda0e3f4fc34f96e562caa7c7bd8
   CocoaLumberjack: 0af89e0de15835a499fcc6ee5e0b6d396bc95976
 
-COCOAPODS: 0.26.1
+COCOAPODS: 0.28.0
