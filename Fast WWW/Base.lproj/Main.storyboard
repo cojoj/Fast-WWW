@@ -71,7 +71,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <connections>
-                                                        <action selector="saveNewPort:" destination="YeU-Fk-tqv" eventType="editingChanged" id="clt-Un-ER6"/>
+                                                        <action selector="saveNewPort:" destination="YeU-Fk-tqv" eventType="editingDidEnd" id="uMx-t8-8uZ"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

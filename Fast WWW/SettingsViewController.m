@@ -24,6 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
     port = 8080;
     server = [[HTTPServer alloc] init];
     
@@ -41,7 +42,11 @@
 
 - (IBAction)saveNewPort:(UITextField *)sender
 {
-    port = [sender.text intValue];
+    if (![self.portTextField.text isEqualToString:@""]) {
+        port = [sender.text intValue];
+    } else {
+        port = 8080;
+    }
 }
 
 - (IBAction)setServerMode:(UISwitch *)sender
