@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *portTextField;
 @property (strong, nonatomic) IBOutlet UILabel *IPAddressLabel;
-@property (strong, nonatomic) IBOutlet UILabel *infoLabel;
+- (IBAction)saveNewPort:(UITextField *)sender;
 - (IBAction)setServerMode:(UISwitch *)sender;
 
 

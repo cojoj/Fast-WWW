@@ -24,15 +24,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    port = 8080;
     server = [[HTTPServer alloc] init];
     
-    if ([[self getIPAddress] isEqualToString:@"error"]) {
-        [self.infoLabel setText:@"You can't broadcast through GSM"];
-        [self.IPAddressLabel setText:@"Turn on WiFi!"];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+    
+    NSString *IPAddress = [NSString stringWithString:[self getIPAddress]];
+    if ([IPAddress isEqualToString:@"error"]) {
+        [self.IPAddressLabel setText:@"Please turn on WiFi"];
     } else {
-        [self.infoLabel setText:@"You are broadcating on:"];
-        [self.IPAddressLabel setText:[NSString stringWithFormat:@"%@:%@", [self getIPAddress], self.portTextField.text ? self.portTextField.text : @"8080"]];
+        [self.IPAddressLabel setText:@"Turn on iOS server"];
     }
+}
+
+- (IBAction)saveNewPort:(UITextField *)sender
+{
+    port = [sender.text intValue];
 }
 
 - (IBAction)setServerMode:(UISwitch *)sender
@@ -41,9 +50,11 @@
         if ([server isRunning]) {
             [server stop];
             NSLog(@"Server was turned off!");
+            [self.IPAddressLabel setText:@"Turn on iOS server"];
         }
     } else {
         [self fireUpServer];
+        [self.IPAddressLabel setText:[NSString stringWithFormat:@"%@:%u", [self getIPAddress], port]];
     }
 }
 
@@ -82,12 +93,23 @@
 - (void)fireUpServer
 {
     NSError *error;
+    [server setType:@"_http._tcp."];
+    [server setPort:port];
+    NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
+    [server setDocumentRoot:webPath];
 	if([server start:&error]) {
 		NSLog(@"Started HTTP Server on port %hu", [server listeningPort]);
 	}
 	else {
 		NSLog(@"Error starting HTTP Server: %@", error);
 	}
+}
+
+#pragma mark - Tap gesture
+
+- (void)dismissKeyboard
+{
+    [self.portTextField resignFirstResponder];
 }
 
 @end
