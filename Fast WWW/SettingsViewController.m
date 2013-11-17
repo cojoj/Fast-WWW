@@ -16,10 +16,21 @@
     HTTPServer *server;
     UInt16 port;
 }
+
+@property (nonatomic, strong) NSString *IPAddress;
+
 @end
 
 @implementation SettingsViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if ([[self getIPAddress] isEqualToString:@"error"]) {
+        [self.IPAddressLabel setText:@"Please turn on WiFi"];
+    } else {
+        [self.IPAddressLabel setText:@"Turn on iOS server"];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -27,17 +38,10 @@
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     port = 8080;
     server = [[HTTPServer alloc] init];
+    [self setupHTTPServer:server];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                          action:@selector(dismissKeyboard)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
-    
-    NSString *IPAddress = [NSString stringWithString:[self getIPAddress]];
-    if ([IPAddress isEqualToString:@"error"]) {
-        [self.IPAddressLabel setText:@"Please turn on WiFi"];
-    } else {
-        [self.IPAddressLabel setText:@"Turn on iOS server"];
-    }
 }
 
 - (IBAction)saveNewPort:(UITextField *)sender
@@ -58,8 +62,9 @@
             [self.IPAddressLabel setText:@"Turn on iOS server"];
         }
     } else {
-        [self fireUpServer];
-        [self.IPAddressLabel setText:[NSString stringWithFormat:@"%@:%u", [self getIPAddress], port]];
+        if ([self fireUpServer]) {
+            [self.IPAddressLabel setText:[NSString stringWithFormat:@"%@:%u", [self getIPAddress], port]];
+        }
     }
 }
 
@@ -95,19 +100,27 @@
 
 #pragma mark - Server setting
 
-- (void)fireUpServer
+- (BOOL)fireUpServer
 {
     NSError *error;
-    [server setType:@"_http._tcp."];
-    [server setPort:port];
-    NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
-    [server setDocumentRoot:webPath];
-	if([server start:&error]) {
+	if([server start:&error] && ![[self getIPAddress] isEqualToString:@"error"]) {
 		NSLog(@"Started HTTP Server on port %hu", [server listeningPort]);
-	}
-	else {
+        return TRUE;
+	} else {
 		NSLog(@"Error starting HTTP Server: %@", error);
+        [self.IPAddressLabel setText:@"Please turn on WiFi"];
+        [server stop];
+        [self.serverModeSwitch setOn:NO animated:YES];
+        return FALSE;
 	}
+}
+
+- (void)setupHTTPServer:(HTTPServer *)serv
+{
+    [serv setType:@"_http._tcp."];
+    [serv setPort:port];
+    NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
+    [serv setDocumentRoot:webPath];
 }
 
 #pragma mark - Tap gesture

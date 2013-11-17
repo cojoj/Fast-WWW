@@ -130,6 +130,7 @@
                     <connections>
                         <outlet property="IPAddressLabel" destination="Zvl-Na-8Li" id="mTC-WS-NZh"/>
                         <outlet property="portTextField" destination="Q15-E8-89K" id="meJ-YY-JOf"/>
+                        <outlet property="serverModeSwitch" destination="vfJ-aJ-EeF" id="dFi-Yl-qxw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ra3-Z1-Gzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
