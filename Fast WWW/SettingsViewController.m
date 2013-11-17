@@ -17,6 +17,7 @@
     HTTPServer *server;
     UInt16 port;
 }
+@property (strong, nonatomic) IBOutlet UIImageView *serverImageView;
 @end
 
 @implementation SettingsViewController
@@ -63,9 +64,11 @@
             NSLog(@"Server was turned off!");
             [self.IPAddressLabel setText:@"Turn on iOS server"];
         }
+        [self.serverImageView setImage:[UIImage imageNamed:@"LionServerIconBlack"]];
     } else {
         if ([self fireUpServer]) {
             [self.IPAddressLabel setText:[NSString stringWithFormat:@"%@:%u", [self getIPAddress], port]];
+            [self.serverImageView setImage:[UIImage imageNamed:@"LionServerIcon"]];
         }
     }
 }

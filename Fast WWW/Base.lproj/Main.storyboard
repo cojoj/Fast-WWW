@@ -118,6 +118,20 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="195" id="gmt-Oo-ZFB">
+                                        <rect key="frame" x="0.0" y="211" width="320" height="195"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gmt-Oo-ZFB" id="wsC-gd-KVY">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LionServerIconBlack" translatesAutoresizingMaskIntoConstraints="NO" id="rvm-XM-VUT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -130,6 +144,7 @@
                     <connections>
                         <outlet property="IPAddressLabel" destination="Zvl-Na-8Li" id="mTC-WS-NZh"/>
                         <outlet property="portTextField" destination="Q15-E8-89K" id="meJ-YY-JOf"/>
+                        <outlet property="serverImageView" destination="rvm-XM-VUT" id="Htz-OG-AFC"/>
                         <outlet property="serverModeSwitch" destination="vfJ-aJ-EeF" id="dFi-Yl-qxw"/>
                     </connections>
                 </tableViewController>
@@ -158,6 +173,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LionServerIconBlack" width="276" height="258"/>
         <image name="editor" width="25" height="25"/>
         <image name="server" width="25" height="25"/>
     </resources>
