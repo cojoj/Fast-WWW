@@ -23,6 +23,7 @@
 		707360BA183408EB00BBE8BE /* Fast_WWWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 707360B9183408EB00BBE8BE /* Fast_WWWTests.m */; };
 		70D1746F18340D93005B85F6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D1746E18340D93005B85F6 /* SettingsViewController.m */; };
 		70D1747218340EF2005B85F6 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D1747118340EF2005B85F6 /* EditorViewController.m */; };
+		70E381E918397849009CA2A6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E381E818397849009CA2A6 /* Reachability.m */; };
 		70E610A2183803F400A06781 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E610A1183803F400A06781 /* CFNetwork.framework */; };
 		70E610A41838040900A06781 /* Web in Resources */ = {isa = PBXBuildFile; fileRef = 70E610A31838040900A06781 /* Web */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,8 @@
 		70D1746E18340D93005B85F6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		70D1747018340EF2005B85F6 /* EditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
 		70D1747118340EF2005B85F6 /* EditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
+		70E381E718397849009CA2A6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		70E381E818397849009CA2A6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		70E610A1183803F400A06781 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		70E610A31838040900A06781 /* Web */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Web; path = ../Web; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +151,7 @@
 				70736097183408EB00BBE8BE /* InfoPlist.strings */,
 				7073609A183408EB00BBE8BE /* main.m */,
 				7073609C183408EB00BBE8BE /* Fast WWW-Prefix.pch */,
+				70E381EA18397851009CA2A6 /* Reachability */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -168,6 +172,15 @@
 				707360B6183408EB00BBE8BE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70E381EA18397851009CA2A6 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				70E381E718397849009CA2A6 /* Reachability.h */,
+				70E381E818397849009CA2A6 /* Reachability.m */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +320,7 @@
 				7073609F183408EB00BBE8BE /* AppDelegate.m in Sources */,
 				7073609B183408EB00BBE8BE /* main.m in Sources */,
 				70D1747218340EF2005B85F6 /* EditorViewController.m in Sources */,
+				70E381E918397849009CA2A6 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

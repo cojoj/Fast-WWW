@@ -10,25 +10,27 @@
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import <HTTPServer.h>
+#import "Reachability.h"
 
 @interface SettingsViewController ()
 {
     HTTPServer *server;
     UInt16 port;
 }
-
-@property (nonatomic, strong) NSString *IPAddress;
-
 @end
 
 @implementation SettingsViewController
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if ([[self getIPAddress] isEqualToString:@"error"]) {
-        [self.IPAddressLabel setText:@"Please turn on WiFi"];
-    } else {
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    [reach startNotifier];
+    NetworkStatus netStat = [reach currentReachabilityStatus];
+    
+    if (netStat == ReachableViaWiFi) {
         [self.IPAddressLabel setText:@"Turn on iOS server"];
+    } else {
+        [self.IPAddressLabel setText:@"Please turn on WiFi"];
     }
 }
 
@@ -98,7 +100,7 @@
     
 }
 
-#pragma mark - Server setting
+#pragma mark - Setting server
 
 - (BOOL)fireUpServer
 {
