@@ -8,6 +8,8 @@
 
 #import "EditorViewController.h"
 
+#define TEXT_VIEV_Y_POSITION 58
+
 @interface EditorViewController ()
 
 @end
@@ -56,11 +58,11 @@
 - (void)keyboardWasShown:(NSNotification*)notification {
     NSDictionary* info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    self.webisteTextView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - keyboardSize.height);
+    self.webisteTextView.frame = CGRectMake(0, TEXT_VIEV_Y_POSITION, self.view.frame.size.width, self.view.frame.size.height - keyboardSize.height);
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)notification {
-    self.webisteTextView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.webisteTextView.frame = CGRectMake(0, TEXT_VIEV_Y_POSITION, self.view.frame.size.width, self.view.frame.size.height);
 }
 
 @end
