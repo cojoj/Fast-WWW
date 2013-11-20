@@ -13,14 +13,17 @@
 #import "Reachability.h"
 
 @interface SettingsViewController ()
-{
-    HTTPServer *server;
-    UInt16 port;
-}
+
 @property (strong, nonatomic) IBOutlet UIImageView *serverImageView;
+
 @end
 
 @implementation SettingsViewController
+{
+    // Declaration of private instance variables
+    HTTPServer *server;
+    UInt16 port;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -124,8 +127,7 @@
 {
     [serv setType:@"_http._tcp."];
     [serv setPort:port];
-    NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
-    [serv setDocumentRoot:webPath];
+    [serv setDocumentRoot:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web"]];
 }
 
 #pragma mark - Tap gesture
@@ -133,6 +135,13 @@
 - (void)dismissKeyboard
 {
     [self.portTextField resignFirstResponder];
+}
+
+#pragma mark - Documents directory
+
+- (NSString *)applicationDocumentsDirectory
+{
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 @end

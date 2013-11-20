@@ -12,7 +12,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    NSString *websitePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
+    NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web"];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    [manager copyItemAtPath:websitePath toPath:storePath error:nil];
+    
+    // NSLog(@"%@", [self applicationDocumentsDirectory]);
     return YES;
 }
 							
@@ -41,6 +47,13 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Documents directory
+
+- (NSString *)applicationDocumentsDirectory
+{
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 @end

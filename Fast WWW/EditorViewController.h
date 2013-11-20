@@ -10,4 +10,7 @@
 
 @interface EditorViewController : UIViewController
 
+- (IBAction)savePage:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UITextView *webisteTextView;
+
 @end
