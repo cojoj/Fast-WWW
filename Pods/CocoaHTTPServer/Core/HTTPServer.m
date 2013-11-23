@@ -520,7 +520,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	[connectionsLock lock];
 	result = [connections count];
 	[connectionsLock unlock];
-	
+    
 	return result;
 }
 
@@ -567,6 +567,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	[connectionsLock unlock];
 	
 	[newConnection start];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Added connection" object:self];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -689,6 +690,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	[connections removeObject:[notification object]];
 	
 	[connectionsLock unlock];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Removed connection" object:self];
 }
 
 /**

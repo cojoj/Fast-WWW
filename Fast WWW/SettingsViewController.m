@@ -23,6 +23,7 @@
     // Declaration of private instance variables
     HTTPServer *server;
     UInt16 port;
+    int numberOfConnections;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -42,9 +43,19 @@
 {
     [super viewDidLoad];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
+    numberOfConnections = 0;
     port = 8080;
     server = [[HTTPServer alloc] init];
     [self setupHTTPServer:server];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedNotification:)
+                                                 name:@"Added connection"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedNotification:)
+                                                 name:@"Removed connection"
+                                               object:nil];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
@@ -135,6 +146,19 @@
 - (void)dismissKeyboard
 {
     [self.portTextField resignFirstResponder];
+}
+
+#pragma mark - Notifications
+
+- (void)receivedNotification:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:@"Added connection"]) {
+        ++numberOfConnections;
+        // NSLog(@"Number of connections: %i", numberOfConnections);
+    } else if ([notification.name isEqualToString:@"Removed connection"]) {
+        --numberOfConnections;
+        // NSLog(@"Number of connections: %i", numberOfConnections);
+    }
 }
 
 #pragma mark - Documents directory
