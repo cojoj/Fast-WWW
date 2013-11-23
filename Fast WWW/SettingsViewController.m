@@ -15,6 +15,7 @@
 @interface SettingsViewController ()
 
 @property (strong, nonatomic) IBOutlet UIImageView *serverImageView;
+@property (strong, nonatomic) IBOutlet UILabel *connectionsLabel;
 
 @end
 
@@ -154,9 +155,11 @@
 {
     if ([notification.name isEqualToString:@"Added connection"]) {
         ++numberOfConnections;
+        [self.connectionsLabel setText:[NSString stringWithFormat:@"%i", numberOfConnections]];
         // NSLog(@"Number of connections: %i", numberOfConnections);
     } else if ([notification.name isEqualToString:@"Removed connection"]) {
         --numberOfConnections;
+        [self.connectionsLabel setText:[NSString stringWithFormat:@"%i", numberOfConnections]];
         // NSLog(@"Number of connections: %i", numberOfConnections);
     }
 }
