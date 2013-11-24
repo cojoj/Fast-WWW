@@ -58,8 +58,9 @@
                                                  name:@"Removed connection"
                                                object:nil];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:tap];
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
+    [self.view addGestureRecognizer:recognizer];
 }
 
 - (IBAction)saveNewPort:(UITextField *)sender
