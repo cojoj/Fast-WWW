@@ -142,6 +142,20 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="147" id="cKb-JG-kRY">
+                                        <rect key="frame" x="0.0" y="255" width="320" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="cKb-JG-kRY" id="jb9-j9-tlv">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="147"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d71-KD-VJT">
+                                                    <rect key="frame" x="0.0" y="-1" width="320" height="150"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -155,6 +169,7 @@
                         <outlet property="IPAddressLabel" destination="Zvl-Na-8Li" id="mTC-WS-NZh"/>
                         <outlet property="connectionsLabel" destination="rFb-pO-k99" id="QII-ou-o48"/>
                         <outlet property="portTextField" destination="Q15-E8-89K" id="meJ-YY-JOf"/>
+                        <outlet property="serverImageView" destination="d71-KD-VJT" id="RQ1-Pt-moY"/>
                         <outlet property="serverModeSwitch" destination="vfJ-aJ-EeF" id="dFi-Yl-qxw"/>
                     </connections>
                 </tableViewController>

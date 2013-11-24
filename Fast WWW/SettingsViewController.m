@@ -48,6 +48,7 @@
     port = 8080;
     server = [[HTTPServer alloc] init];
     [self setupHTTPServer:server];
+    [self loadAnimationImagesToArray];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedNotification:)
@@ -80,11 +81,11 @@
             NSLog(@"Server was turned off!");
             [self.IPAddressLabel setText:@"Turn on iOS server"];
         }
-        [self.serverImageView setImage:[UIImage imageNamed:@"LionServerIconBlack"]];
+        [self.serverImageView stopAnimating];
     } else {
         if ([self fireUpServer]) {
             [self.IPAddressLabel setText:[NSString stringWithFormat:@"%@:%u", [self getIPAddress], port]];
-            [self.serverImageView setImage:[UIImage imageNamed:@"LionServerIcon"]];
+            [self.serverImageView startAnimating];
         }
     }
 }
@@ -143,7 +144,7 @@
     [serv setDocumentRoot:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web"]];
 }
 
-#pragma mark - Tap gesture
+#pragma mark - Swipe gesture
 
 - (void)dismissKeyboard
 {
@@ -170,6 +171,38 @@
 - (NSString *)applicationDocumentsDirectory
 {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+#pragma mark - Loading animation
+
+- (void)loadAnimationImagesToArray
+{
+    NSArray *animationArray = [NSArray arrayWithObjects:[UIImage imageNamed:@"frame1.png"],
+                                                        [UIImage imageNamed:@"frame2.png"],
+                                                        [UIImage imageNamed:@"frame3.png"],
+                                                        [UIImage imageNamed:@"frame4.png"],
+                                                        [UIImage imageNamed:@"frame5.png"],
+                                                        [UIImage imageNamed:@"frame6.png"],
+                                                        [UIImage imageNamed:@"frame7.png"],
+                                                        [UIImage imageNamed:@"frame8.png"],
+                                                        [UIImage imageNamed:@"frame9.png"],
+                                                        [UIImage imageNamed:@"frame10.png"],
+                                                        [UIImage imageNamed:@"frame11.png"],
+                                                        [UIImage imageNamed:@"frame12.png"],
+                                                        [UIImage imageNamed:@"frame13.png"],
+                                                        [UIImage imageNamed:@"frame14.png"],
+                                                        [UIImage imageNamed:@"frame15.png"],
+                                                        [UIImage imageNamed:@"frame16.png"],
+                                                        [UIImage imageNamed:@"frame17.png"],
+                                                        [UIImage imageNamed:@"frame18.png"],
+                                                        [UIImage imageNamed:@"frame19.png"],
+                                                        [UIImage imageNamed:@"frame20.png"],
+                                                        [UIImage imageNamed:@"frame21.png"],
+                                                        [UIImage imageNamed:@"frame22.png"],
+                                                        [UIImage imageNamed:@"frame23.png"],
+                                                        [UIImage imageNamed:@"frame24.png"],
+                                                        [UIImage imageNamed:@"frame25.png"], nil];
+    [self.serverImageView setAnimationImages:animationArray];
 }
 
 @end
