@@ -26,12 +26,23 @@
     NSString *websiteContent = [NSString stringWithContentsOfFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web/index.html"] encoding:NSUTF8StringEncoding error:nil];
     [self.webisteTextView setText:websiteContent];
     
+    // Adding swipe gesture to hide keyboard when is not needed anymore
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
+    [self.view addGestureRecognizer:recognizer];
+    
     [self addKeyboardObservers];
 }
 
 - (IBAction)savePage:(UIButton *)sender
 {
     [self.webisteTextView.text writeToFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web/index.html"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+
+- (IBAction)loadSampleHTML:(UIButton *)sender
+{
+    NSString *indexPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web/index.html"];
+    [self.webisteTextView setText:[NSString stringWithContentsOfFile:indexPath encoding:NSUTF8StringEncoding error:nil]];
 }
 
 #pragma mark - Documents directory
