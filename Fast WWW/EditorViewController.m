@@ -31,16 +31,19 @@
     [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
     [self.view addGestureRecognizer:recognizer];
     
+    // Addig observer for the keyboard to see wheather it is showed or hidden
     [self addKeyboardObservers];
 }
 
 - (IBAction)savePage:(UIButton *)sender
 {
+    // Writing the content of text view to the file in Documents directory
     [self.webisteTextView.text writeToFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web/index.html"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 - (IBAction)loadSampleHTML:(UIButton *)sender
 {
+    // Loading sample HTML website from main bundle and showing it in text view
     NSString *indexPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web/index.html"];
     [self.webisteTextView setText:[NSString stringWithContentsOfFile:indexPath encoding:NSUTF8StringEncoding error:nil]];
 }

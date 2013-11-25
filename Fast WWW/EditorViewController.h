@@ -10,8 +10,11 @@
 
 @interface EditorViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextView *webisteTextView;
+@property (strong, nonatomic) IBOutlet UITextView *webisteTextView; // Text view which holds website content
+
+// Action which is saving the source to the index.html stored inside Documents
 - (IBAction)savePage:(UIButton *)sender;
+// Loading sample HTML source from main bundle
 - (IBAction)loadSampleHTML:(UIButton *)sender;
 
 @end
