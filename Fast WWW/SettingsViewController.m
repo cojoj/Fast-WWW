@@ -14,8 +14,9 @@
 
 @interface SettingsViewController ()
 
-@property (strong, nonatomic) IBOutlet UIImageView *serverImageView;
-@property (strong, nonatomic) IBOutlet UILabel *connectionsLabel;
+// Private properties
+@property (strong, nonatomic) IBOutlet UIImageView *serverImageView;    // Image view for holding infinite animation
+@property (strong, nonatomic) IBOutlet UILabel *connectionsLabel;       // Lable diplaying a number of connected computers to server
 
 @end
 
@@ -29,10 +30,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // Chcking whether we are using a GSM or WiFi
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     [reach startNotifier];
     NetworkStatus netStat = [reach currentReachabilityStatus];
     
+    // If WiFi we're updating labels properly
     if (netStat == ReachableViaWiFi) {
         [self.IPAddressLabel setText:@"Turn on iOS server"];
     } else {
@@ -43,13 +46,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Setting table view backgroud to be white
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
+    // Initializing number of connections
     numberOfConnections = 0;
+    // Setting default port
     port = 8080;
+    // Initializing server
     server = [[HTTPServer alloc] init];
+    // Setting up the server
     [self setupHTTPServer:server];
+    // Loading animation frames into image view
     [self loadAnimationImagesToArray];
     
+    // Setting notification center to observe connected hosts
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedNotification:)
                                                  name:@"Added connection"
@@ -59,6 +70,7 @@
                                                  name:@"Removed connection"
                                                object:nil];
     
+    // Adding swipe gesture to hide keyboard when is not needed anymore
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
     [self.view addGestureRecognizer:recognizer];
@@ -66,6 +78,8 @@
 
 - (IBAction)saveNewPort:(UITextField *)sender
 {
+    // Setting proper port from text field
+    // Default is 8080
     if (![self.portTextField.text isEqualToString:@""]) {
         port = [sender.text intValue];
     } else {
@@ -139,6 +153,7 @@
 
 - (void)setupHTTPServer:(HTTPServer *)serv
 {
+    // Setting up necessary info for server to start
     [serv setType:@"_http._tcp."];
     [serv setPort:port];
     [serv setDocumentRoot:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web"]];
