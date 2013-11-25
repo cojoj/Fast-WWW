@@ -31,7 +31,7 @@
 
 - (IBAction)savePage:(UIButton *)sender
 {
-    
+    [self.webisteTextView.text writeToFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web/index.html"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 #pragma mark - Documents directory
