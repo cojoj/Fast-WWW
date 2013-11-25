@@ -15,6 +15,9 @@
 @end
 
 @implementation EditorViewController
+{
+    NSFileManager *manager;
+}
 
 - (void)viewDidLoad
 {
@@ -23,21 +26,12 @@
     NSString *websiteContent = [NSString stringWithContentsOfFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Web/index.html"] encoding:NSUTF8StringEncoding error:nil];
     [self.webisteTextView setText:websiteContent];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:tap];
-    
     [self addKeyboardObservers];
 }
 
 - (IBAction)savePage:(UIButton *)sender
 {
-}
-
-#pragma mark - Tap gesture
-
-- (void)dismissKeyboard
-{
-    [self.webisteTextView resignFirstResponder];
+    
 }
 
 #pragma mark - Documents directory
@@ -47,7 +41,7 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-#pragma mark - Keyboard observers
+#pragma mark - Keyboard methods
 
 - (void)addKeyboardObservers
 {
@@ -63,6 +57,11 @@
 
 - (void)keyboardWillBeHidden:(NSNotification*)notification {
     self.webisteTextView.frame = CGRectMake(0, TEXT_VIEV_Y_POSITION, self.view.frame.size.width, self.view.frame.size.height);
+}
+
+- (void)dismissKeyboard
+{
+    [self.webisteTextView resignFirstResponder];
 }
 
 @end
